@@ -4,6 +4,7 @@ import { PagesComponent } from './pages.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
+import { ComponentsModule } from './components/components.module';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     MaterialModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [PagesComponent]
