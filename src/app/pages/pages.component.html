@@ -1,0 +1,31 @@
+<h2>Lottery Game</h2>
+
+<label for="game">Select Game:</label>
+<select id="game" [ngModel]="selectedGame" (ngModelChange)="selectedGame = $event">
+  <option value="1">Lô đề</option>
+  <option value="2">Bao lô</option>
+</select>
+
+<div *ngIf="selectedGame === 1">
+  <label for="number">Select Number (0 - 99):</label>
+  <input type="number" id="number" [(ngModel)]="selectedNumber" min="0" max="99">
+
+  <label for="headPrice">Head Price:</label>
+  <input type="number" id="headPrice" [(ngModel)]="selectedPrice">
+
+  <label for="tailPrice">Tail Price:</label>
+  <input type="number" id="tailPrice" [(ngModel)]="selectedPrice">
+
+  <button (click)="saveSelection()">Save</button>
+</div>
+
+<div *ngIf="selectedGame === 2">
+  <label for="number">Select Number (0 - 99):</label>
+  <input type="number" id="number" [(ngModel)]="selectedNumber" min="0" max="99">
+
+  <label for="baoPrice">Bao Price:</label>
+  <input type="number" id="baoPrice" [(ngModel)]="selectedPrice">
+
+  <button (click)="saveSelection()">Save</button>
+</div>
+
