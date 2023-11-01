@@ -8,16 +8,12 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Chọn số đánh (0 - 99):</mat-label>
-    <input matInput type="number" [(ngModel)]="selectedNumber" min="0" max="99">
+    <mat-label>Chọn số đánh (0 - 999999):</mat-label>
+    <input matInput type="number" [(ngModel)]="selectedNumber" min="0" max="999999">
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Tiền đầu:</mat-label>
-    <input matInput type="number" [(ngModel)]="headPrice">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Tiền đuôi:</mat-label>
-    <input matInput type="number" [(ngModel)]="tailPrice">
+    <mat-label>Tiền đặt:</mat-label>
+    <input matInput type="number" [(ngModel)]="price">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

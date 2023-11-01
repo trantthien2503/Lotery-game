@@ -1,30 +1,50 @@
 <h2>Lottery Game</h2>
 
-<label for="game">Select Game:</label>
-<select id="game" [ngModel]="selectedGame" (ngModelChange)="selectedGame = $event">
-  <option [value]="1">Lô đề</option>
-  <option [value]="2">Bao lô</option>
-</select>
+<button (click)="openGameOne()">Chơi lô đề</button>
+<button style="margin-left: 8px;" (click)="openGameTwo()">Bao lô</button>
 
-<div>
-  <label for="number">Select Number (0 - 99):</label>
-  <input type="number" id="number" [(ngModel)]="selectedNumber" min="0" max="99">
+<ng-container *ngIf="resultsGameOne.length">
+  <h1>Danh sách lô đề</h1>
+  <table>
+    <tr>
+      <th>Người chơi</th>
+      <th>Trò chơi</th>
+      <th>Số đánh</th>
+      <th>Tiền đầu</th>
+      <th>Tiền đuôi</th>
+      <th>Thao tác</th>
+    </tr>
+    <tr *ngFor="let result of resultsGameOne; index as i">
+      <td>{{genarateUser(result.id_user)}}</td>
+      <td>{{genarateGame(result.type_game)}}</td>
+      <td>{{result.selected_number}}</td>
+      <td>{{result.head_price}}</td>
+      <td>{{result.tail_price}}</td>
+      <td>
+        <span (click)="deleteResultGameOne(i)">Xóa</span>
+      </td>
+    </tr>
+  </table>
+</ng-container>
 
-  <label for="headPrice">Head Price:</label>
-  <input type="number" id="headPrice" [(ngModel)]="selectedPrice">
-
-  <label for="tailPrice">Tail Price:</label>
-  <input type="number" id="tailPrice" [(ngModel)]="selectedPrice">
-
-</div>
-
-<div>
-  <label for="number">Select Number (0 - 99):</label>
-  <input type="number" id="number" [(ngModel)]="selectedNumber" min="0" max="99">
-
-  <label for="baoPrice">Bao Price:</label>
-  <input type="number" id="baoPrice" [(ngModel)]="selectedPrice">
-
-</div>
-
-<button (click)="saveSelection()">Save</button>
+<ng-container *ngIf="resultsGameTwo.length">
+  <h1>Danh sách bao lô</h1>
+  <table>
+    <tr>
+      <th>Người chơi</th>
+      <th>Trò chơi</th>
+      <th>Số đánh</th>
+      <th>Tiền đặt</th>
+      <th>Thao tác</th>
+    </tr>
+    <tr *ngFor="let result of resultsGameTwo; index as i">
+      <td>{{genarateUser(result.id_user)}}</td>
+      <td>{{genarateGame(result.type_game)}}</td>
+      <td>{{result.selected_number}}</td>
+      <td>{{result.price}}</td>
+      <td>
+        <span (click)="deleteResultGameTwo(i)">Xóa</span>
+      </td>
+    </tr>
+  </table>
+</ng-container>
